@@ -1,0 +1,24 @@
+{
+  "name": "fontpack",
+  "version": "0.1.0",
+  "authors": [
+    "Даниил Пронин <mail@grawl.ru>"
+  ],
+  "description": "Sass mixin to create @font-face for custom fonts",
+  "main": "fontpack.sass",
+  "keywords": [
+    "sass",
+    "mixin",
+    "font",
+    "font-face"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/Grawl/fontpack",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

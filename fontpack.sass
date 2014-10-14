@@ -1,0 +1,70 @@
+//
+	FontPack
+	Sass mixin to create @font-face for custom fonts.
+	Syntax from [FontSpring article](http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax)
+//
+	@param $fontPack-<format>
+	Tumbler for choose what fonts are you want. By default enabled only WOFF and EOT because all modern browsers (including IE9>) can work with WOFF and you need to convert your TTF/OTF into EOT. Every batch font converter can give you WOFF.
+	So naturally you need
+	If you want to know what formats are for what browsers just see “Sub-features” on [Can I Use](http://caniuse.com/#feat=fontface)
+//
+	@param $fontPack-eot
+	Embedded OpenType
+$fontPack-eot: true !default
+//
+	@param $fontPack-woff
+	Web Open Font Format
+$fontPack-woff: true !default
+//
+	@param $fontPack-ttf
+	TrueType Font
+$fontPack-ttf: false !default
+//
+	@param $fontPack-otf
+	OpenType Font
+$fontPack-otf: false !default
+//
+	@param $fontPack-svg
+	SVG font
+$fontPack-svg: false !default
+//
+	@param $fontPack-path
+	Path to fonts directory. All fonts must be in this directory relative to result CSS.
+	TODO: Allow to set unique folder names for each font name, such as `../assets/fonts/PTSans-Regular/PTSans-Regular.<format>`, where `../assets/fonts/` is path prefix, `PTSans-Regular/` is subpath that matches `$name` and `PTSans-Regular.<format>` is file names where `<format>` matches chosen formats.
+$fontPack-path: 'fonts/' !default
+//
+	@mixin +fontPack($name)
+	Generates `@font-face` rule with IE<9 `eot` hack and other chosen font formats
+	@param $name
+	Font base file name. You need to name your font files of different formats with the same name like `PTSans-Regular.ttf`, `PTSans-Regular.eot` and `PTSans-Regular.svg`.
+=fontPack($name)
+	@font-face
+		font-family: $name
+		// TODO: add `local()` support in a pair with `url()`
+		$src-eot: url($fontPack-path + $name + '.eot?#iefix') format('embedded-opentype')
+		$src-woff: url($fontPack-path + $name + '.woff') format('woff')
+		$src-ttf: url($fontPack-path + $name + '.ttf') format('truetype')
+		$src-otf: url($fontPack-path + $name + '.otf') format('opentype')
+		$src-svg: url($fontPack-path + $name + '.svg') format('svg')
+		$src: ()
+		$separator: comma
+		@if $fontPack-eot
+			src: url($fontPack-path + $name + '.eot')
+			$src: append($src, $src-eot, $separator)
+		@if $fontPack-woff
+			$src: append($src, $src-woff, $separator)
+		@if $fontPack-ttf
+			$src: append($src, $src-ttf, $separator)
+		@if $fontPack-otf
+			$src: append($src, $src-otf, $separator)
+		@if $fontPack-svg
+			$src: append($src, $src-svg)
+		src: $src
+//
+	@mixin +fontPack_generate($list)
+	Mixin to iterate fonts and get all your fonts just by one list and this mixin.
+	@param $list
+	Sass list where each item is a string of font name.
+=fontPack_generate($list)
+	@each $name in $list
+		+fontPack($name)

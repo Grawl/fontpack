@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";EAyCE,WAAW,ECxCH,gBAAgB;EDkDvB,GAAG,EAAE,+BAAoC;EAU1C,GAAG,EAPF,mHAAmC",
+"sources": ["../fontpack.sass","test.sass"],
+"names": [],
+"file": "test.css"
+}
