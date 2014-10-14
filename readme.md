@@ -40,6 +40,7 @@ Variable | Description | Default
 `$fontPack-ttf` | TrueType Font | `false`
 `$fontPack-otf` | OpenType Font | `false`
 `$fontPack-svg` | SVG font | `false`
+`$fontPack-path`| Path prefix | 'fonts/'
 
 Just add them **before** you `@import fontpack` and they will be applied.
 
