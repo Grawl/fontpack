@@ -2,6 +2,12 @@
 
 ### Sass mixin to create `@font-face` for custom fonts.
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+use [`postcss-font-magician`](https://github.com/jonathantneal/postcss-font-magician) instead
+
+---
+
 Bulletproof syntax from [FontSpring article](http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax)
 
 ## Quick start
